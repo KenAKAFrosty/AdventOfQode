@@ -1,14 +1,19 @@
 import { component$, Resource, useStylesScoped$ } from '@builder.io/qwik';
 import { DocumentHead, useEndpoint } from '@builder.io/qwik-city';
-import * as solutions from "../solutions/all";
+import * as solutions from "../solutions/all-exported";
 import styles from "./index.css?inline";
 
 export const onGet = () => {
-  return {
-    "Day 1": solutions.day1(),
-    "Day 2": solutions.day2(),
-    "Day 3": solutions.day3()
+  const solutionsMap: Record<string, string> = {};
+
+  let i = 1;
+  for (const key in solutions) {
+    const solution = solutions[key as keyof typeof solutions];
+    solutionsMap[`Day ${i}`] = solution();
+    i++
   }
+
+  return solutionsMap
 }
 
 export default component$(() => {
@@ -23,7 +28,7 @@ export default component$(() => {
             const [key, value] = entries;
             return <>
               <h3>{key}</h3>
-              <p>{value}</p>
+              {value.split("\n").map(line => <p>{line}</p>)}
             </>
           })}
         </div>
