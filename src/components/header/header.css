@@ -8,13 +8,23 @@ header .logo a {
   display: inline-block;
   padding: 10px 10px 7px 20px;
 }
-
+header div { 
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+header div p { 
+  margin-right: -10px;
+}
+header div a { 
+  margin-top: 5px;
+}
 header ul {
   margin: 0;
   padding: 3px 10px 0 0;
   list-style: none;
   flex: 1;
-  text-align: right;
+  text-align: left;
 }
 
 header li {

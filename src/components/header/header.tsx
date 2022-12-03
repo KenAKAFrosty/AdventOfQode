@@ -8,6 +8,7 @@ export default component$(() => {
   return (
     <header>
       <div class="logo">
+        <p>Learn more about </p>
         <a href="https://qwik.builder.io/" target="_blank">
           <QwikLogo />
         </a>
